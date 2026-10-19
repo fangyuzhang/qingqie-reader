@@ -1,0 +1,32 @@
+# 示例书源 02 · POST 搜索 + 回退选择器 + 目录/正文翻页
+# 本文件为「规则格式模板」，域名使用 example.com 占位，不指向任何真实站点。
+# 演示能力：|| 回退选择器、toc.next 目录翻页、content.next 正文翻页、replace 清洗。
+bookSourceName: 示例书源·镜像站
+bookSourceUrl: https://mirror.example.com
+bookSourceGroup: 模板示例
+enabled: false
+
+search:
+  url: "https://mirror.example.com/api/search"
+  method: POST
+  list: "div.result-item || li.search-item"
+  title: "a.name::text || h4 a::text"
+  bookUrl: "a.name::attr(href) || h4 a::attr(href)"
+  author: ".writer::text || .author::text"
+  intro: ".desc::text"
+
+toc:
+  url: "{{bookUrl}}"
+  list: "div.vol-list a || #dir dt a"
+  title: "::text"
+  chapterUrl: "::attr(href)"
+  next: "a.next-page::attr(href)"
+
+content:
+  list: "div.read-content p || #content p"
+  next: "a.page-next::attr(href)"
+  replace:
+    - pattern: "\\(本章完\\)"
+      replacement: ""
+    - pattern: "请记住本书.*"
+      replacement: ""
