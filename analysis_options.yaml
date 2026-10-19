@@ -10,3 +10,6 @@ analyzer:
   errors:
     # 原型期将 info 升级为 warning，保证 flutter analyze 干净
     unused_import: warning
+  exclude:
+    - build/**
+    - android/**
