@@ -46,8 +46,6 @@ class TxtParser {
     final chapters = <Chapter>[];
     final paragraphs = <String>[];
     var length = 0;
-    var volume = '';
-    var volumeId = 0;
     var part = 0;
     var author = '';
 
@@ -82,9 +80,8 @@ class TxtParser {
         }
       }
       if (value.length <= maxHeadingLength && _volumeRe.hasMatch(value)) {
+        // 卷标题：作为章节分组起点（MVP 不单独存储卷信息）
         flush();
-        volume = value;
-        volumeId++;
         title = value;
         part = 0;
       } else if (value.length <= maxHeadingLength && _chapterRe.hasMatch(value)) {
@@ -102,8 +99,6 @@ class TxtParser {
     if (chapters.isEmpty) {
       return const Result.err(AppError(AppErrorKind.parse, '文件中没有可阅读的正文'));
     }
-    // 卷信息目前仅用于分片命名，不单独存储（MVP）
-    volumeId++;
     return Result.ok(TxtBook(title: title, author: author, chapters: chapters));
   }
 }
