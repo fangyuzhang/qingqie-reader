@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../model/book.dart';
 import '../../model/category.dart';
-import 'app_database.dart';
+import '../app_database.dart';
 
 /// 书架/分类 DAO。所有 SQL 只出现在 DAO 层。
 class BookDao {
