@@ -73,7 +73,7 @@ class AppHttpClient {
       }
       final bytes = Uint8List.fromList(data);
       if (bytes.length > maxBytes) {
-        return Result.err(AppError(AppErrorKind.network, '文件过大，已停止下载'));
+        return const Result.err(AppError(AppErrorKind.network, '文件过大，已停止下载'));
       }
       return Result.ok(bytes);
     } catch (e) {
