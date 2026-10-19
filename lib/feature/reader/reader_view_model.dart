@@ -7,6 +7,7 @@ import '../../data/model/bookmark.dart';
 import '../../data/model/chapter.dart';
 import '../../data/model/note.dart';
 import '../../data/model/reader_settings.dart';
+import '../../data/model/reading_progress.dart';
 import '../../data/model/book_source.dart';
 import '../../data/repository/book_source_repository.dart';
 import '../../data/repository/bookshelf_repository.dart';
@@ -89,7 +90,7 @@ class ReaderViewModel extends ChangeNotifier {
         for (final s in _sourcesCache) {
           if (s.id == id) return s;
         }
-        throw AppError(AppErrorKind.unknown, '书籍所属书源已被删除，请重新添加');
+        throw const AppError(AppErrorKind.unknown, '书籍所属书源已被删除，请重新添加');
       });
     }
     var list = (await _reader.chapters(target)).valueOrNull ?? const <Chapter>[];
