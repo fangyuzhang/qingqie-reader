@@ -5,10 +5,6 @@ import 'package:sqflite/sqflite.dart';
 import '../../core/app_error.dart';
 import '../../core/result.dart';
 import '../local/dao/book_dao.dart';
-import '../local/dao/bookmark_dao.dart';
-import '../local/dao/note_dao.dart';
-import '../local/dao/progress_dao.dart';
-import '../local/dao/source_dao.dart';
 import '../local/app_database.dart';
 
 /// 备份恢复统计。
@@ -31,23 +27,10 @@ class RestoreReport {
 /// 备份内容：分类、书籍、进度、书签、笔记、书源（不含本地原文件与章节缓存）。
 /// 格式与上限设计移植自原项目 library_backup.dart（format/version/createdAt + 4MiB）。
 class BackupRepository {
-  BackupRepository({
-    BookDao? bookDao,
-    ProgressDao? progressDao,
-    BookmarkDao? bookmarkDao,
-    NoteDao? noteDao,
-    SourceDao? sourceDao,
-  })  : _books = bookDao ?? BookDao(AppDatabase.instance),
-        _progress = progressDao ?? ProgressDao(AppDatabase.instance),
-        _bookmarks = bookmarkDao ?? BookmarkDao(AppDatabase.instance),
-        _notes = noteDao ?? NoteDao(AppDatabase.instance),
-        _sources = sourceDao ?? SourceDao(AppDatabase.instance);
+  BackupRepository({BookDao? bookDao})
+      : _books = bookDao ?? BookDao(AppDatabase.instance);
 
   final BookDao _books;
-  final ProgressDao _progress;
-  final BookmarkDao _bookmarks;
-  final NoteDao _notes;
-  final SourceDao _sources;
 
   static const String formatTag = 'qingqie-backup';
   static const int backupVersion = 1;
