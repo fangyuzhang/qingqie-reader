@@ -1,0 +1,12 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # 分层约束的辅助提示：避免在 widget 里直接 import dio/sqflite 等 IO 库
+    avoid_print: true
+    prefer_const_constructors: true
+
+analyzer:
+  errors:
+    # 原型期将 info 升级为 warning，保证 flutter analyze 干净
+    unused_import: warning
