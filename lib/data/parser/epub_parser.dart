@@ -56,7 +56,7 @@ class EpubParser {
       }
       final opfBytes = files[opfPath] ?? files[opfPath.toLowerCase()];
       if (opfBytes == null) {
-        return const Result.err(AppError(AppErrorKind.parse, 'EPUB 内容文件缺失：$opfPath'));
+        return Result.err(AppError(AppErrorKind.parse, 'EPUB 内容文件缺失：$opfPath'));
       }
       final opf = XmlDocument.parse(utf8.decode(opfBytes));
       final opfDir = opfPath.contains('/') ? opfPath.substring(0, opfPath.lastIndexOf('/') + 1) : '';
