@@ -11,6 +11,7 @@ class Shelf3D extends StatefulWidget {
     super.key,
     required this.books,
     required this.onOpen,
+    this.onLongPress,
     this.initialIndex = 0,
   });
 
