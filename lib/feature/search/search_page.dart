@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../data/model/book.dart';
 import '../../data/model/book_source.dart';
-import '../../data/model/chapter.dart';
 import '../../data/model/search_item.dart';
 import 'search_view_model.dart';
 
