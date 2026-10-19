@@ -1,5 +1,12 @@
 import 'package:yaml/yaml.dart';
 
+/// 从动态 map 取值并安全转为 String（null 视为空串）。
+String _str(dynamic v) => v == null ? '' : v.toString();
+
+/// 从动态值转为可写的 String→dynamic map（非 map 视为空 map）。
+Map<String, dynamic> _plainMap(dynamic v) =>
+    v is Map ? Map<String, dynamic>.from(v) : <String, dynamic>{};
+
 /// 书源解析失败（带中文原因，导入时直接展示给用户）。
 class BookSourceParseFailure implements Exception {
   const BookSourceParseFailure(this.message);
@@ -249,7 +256,7 @@ class BookSource {
 
   static String _str(Object? v) => v is String ? v.trim() : '';
 
-  /// YamlMap/嵌套 Map → 纯 Map<String, dynamic>。
+  /// YamlMap/嵌套 Map → 纯 `Map<String, dynamic>`。
   static Map<String, dynamic> _plainMap(Map<dynamic, dynamic> m) {
     final out = <String, dynamic>{};
     m.forEach((k, v) {
