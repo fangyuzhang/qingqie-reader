@@ -45,7 +45,7 @@ class LocalImportService {
   Future<Result<ImportedBook>> pickAndImport() async {
     List<PlatformFile> files;
     try {
-      files = await FilePicker.platform.pickFiles(
+      files = await FilePicker.pickFiles(
         type: FileType.custom,
         allowedExtensions: allowedExtensions,
       );
@@ -66,7 +66,7 @@ class LocalImportService {
     Uint8List bytes;
     try {
       final data = await picked.readAsBytes();
-      if (data == null || data.isEmpty) {
+      if (data.isEmpty) {
         return const Result.err(AppError(AppErrorKind.file, '无法读取文件内容，请重新选择'));
       }
       bytes = data;
