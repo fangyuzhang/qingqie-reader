@@ -5,6 +5,7 @@ import '../../data/model/book.dart';
 import '../../data/model/category.dart';
 import 'bookshelf_view_model.dart';
 import 'shelf3d.dart';
+import 'shelf_geometry.dart';
 
 /// 书架页：立体书架 / 列表视图 + 分类 + 本地搜索 + 导入入口。
 class BookshelfPage extends StatefulWidget {
@@ -357,12 +358,12 @@ class _BookList extends StatelessWidget {
                           style: const TextStyle(color: Color(0xFF9A8B72), fontSize: 12),
                         ),
                         const SizedBox(height: 8),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
+                        const ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(4)),
                           child: LinearProgressIndicator(
                             minHeight: 5,
-                            backgroundColor: const Color(0xFFEDE4D3),
-                            valueColor: const AlwaysStoppedAnimation(Color(0xFFE85D26)),
+                            backgroundColor: Color(0xFFEDE4D3),
+                            valueColor: AlwaysStoppedAnimation(Color(0xFFE85D26)),
                           ),
                         ),
                       ],
