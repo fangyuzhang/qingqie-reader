@@ -139,7 +139,7 @@ class BookSourceRepository {
   /// 导出全部书源为 YAML 文本（多文档）。
   Future<Result<String>> exportYaml() async {
     final all = (await this.all()).valueOrNull;
-    if (all == null) return Result.err(const AppError(AppErrorKind.unknown, '读取书源失败'));
+    if (all == null) return const Result.err(AppError(AppErrorKind.unknown, '读取书源失败'));
     if (all.isEmpty) return const Result.ok('');
     final buffer = StringBuffer();
     for (var i = 0; i < all.length; i++) {
