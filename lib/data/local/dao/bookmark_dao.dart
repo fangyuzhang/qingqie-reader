@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../model/bookmark.dart';
-import 'app_database.dart';
+import '../app_database.dart';
 
 /// 书签 DAO。
 class BookmarkDao {
