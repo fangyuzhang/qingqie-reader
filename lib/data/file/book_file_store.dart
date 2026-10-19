@@ -10,7 +10,7 @@ import '../../core/result.dart';
 import '../model/chapter.dart';
 
 /// 书籍文件存储：章节 JSON 缓存 + 封面。
-/// 布局：<appDocuments>/books/<bookId>/chapters.json | cover.<ext>
+/// 布局：`<appDocuments>/books/<bookId>/chapters.json` | `cover.<ext>`
 class BookFileStore {
   BookFileStore._();
   static final BookFileStore instance = BookFileStore._();
