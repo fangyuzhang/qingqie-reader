@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../model/book_source.dart';
-import 'app_database.dart';
+import '../app_database.dart';
 
 /// 书源 DAO（YAML 原文存储）。
 class SourceDao {
