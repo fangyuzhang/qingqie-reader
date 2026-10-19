@@ -97,20 +97,20 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ],
           ),
-          _Section(
+          const _Section(
             title: '关于',
             children: [
-              const _Tile(
+              _Tile(
                 icon: Icons.info_outline,
                 title: '青茄阅读',
                 subtitle: 'v0.1.0 · 基于 Wenku8_Flutter（GPL-3.0）重构',
               ),
-              const _Tile(
+              _Tile(
                 icon: Icons.shield_outlined,
                 title: '免责声明',
                 subtitle: '本项目仅用于个人学习研究；书源规则仅为网页解析规则，禁止用于小说盗版抓取与传播',
               ),
-              const _Tile(
+              _Tile(
                 icon: Icons.description_outlined,
                 title: '开源协议',
                 subtitle: 'GPL-3.0 · 保留原项目版权声明（见 LICENSE 与 NOTICE）',
