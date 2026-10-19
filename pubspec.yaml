@@ -1,0 +1,55 @@
+name: qingqie_reader
+description: "青茄阅读 —— 基于 Wenku8_Flutter（GPL-3.0）重构的本地/书源双引擎小说阅读器"
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.10.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # ---- 状态管理（MVVM：ViewModel = ChangeNotifier，provider 负责注入与监听）----
+  provider: ^6.1.2
+
+  # ---- 数据库（书架/进度/书签/书源/笔记，见 docs/03-数据库表结构设计.md）----
+  sqflite: ^2.3.2
+  path: ^1.9.0
+  path_provider: ^2.1.6
+
+  # ---- 网络（书源网页抓取）----
+  dio: ^5.4.0
+
+  # ---- HTML 解析（书源 CSS 选择器提取）----
+  html: ^0.15.4
+
+  # ---- EPUB 解析（zip + xml）----
+  archive: ^4.0.9
+  xml: ^6.5.0
+
+  # ---- YAML 书源 ----
+  yaml: ^3.1.2
+
+  # ---- 本地导入（TXT/EPUB 文件选择）----
+  file_picker: ^13.1.0
+
+  # ---- TXT 编码检测（GBK/GB18030 解码，Android 原生 Charset）----
+  charset_converter: ^2.5.1
+
+  # ---- 工具 ----
+  shared_preferences: ^2.3.0
+  uuid: ^4.3.3
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    # 书源示例与用户导入的书源都从这里加载/参考
+    - book_sources/
