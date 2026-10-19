@@ -1,0 +1,33 @@
+# 示例书源 01 · GET 搜索 + 三段规则 + 正则清洗
+# 本文件为「规则格式模板」，域名使用 example.com 占位，不指向任何真实站点。
+# 引擎仅解析 CSS 选择器执行网页抓取，不执行任何脚本代码。
+# 严禁将书源用于小说盗版抓取与传播。
+bookSourceName: 示例书源·标准站
+bookSourceUrl: https://www.example.com
+bookSourceGroup: 模板示例
+enabled: true
+
+search:
+  url: "https://www.example.com/search?q={{key}}&page={{page}}"
+  method: GET
+  list: "ul.novel-list > li"
+  title: "h3.book-title a::text"
+  bookUrl: "h3.book-title a::attr(href)"
+  cover: "img::attr(src)"
+  author: "span.author::text"
+  intro: "p.intro::text"
+
+toc:
+  url: ""
+  list: "#chapter-list li a"
+  title: "::text"
+  chapterUrl: "::attr(href)"
+
+content:
+  list: "#chapter-content p"
+  next: ""
+  replace:
+    - pattern: "本章未完.*"
+      replacement: ""
+    - pattern: "https?://\\S+"
+      replacement: ""
