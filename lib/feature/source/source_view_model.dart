@@ -46,7 +46,7 @@ class SourceViewModel extends ChangeNotifier {
   Future<void> importFromFile() async {
     List<PlatformFile> files;
     try {
-      files = await FilePicker.platform.pickFiles(
+      files = await FilePicker.pickFiles(
         type: FileType.custom,
         allowedExtensions: const ['yaml', 'yml', 'json'],
       );
@@ -63,7 +63,7 @@ class SourceViewModel extends ChangeNotifier {
     String text;
     try {
       final data = await files.first.readAsBytes();
-      if (data == null || data.isEmpty) {
+      if (data.isEmpty) {
         message = '文件为空';
         notifyListeners();
         return;
