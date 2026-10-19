@@ -12,6 +12,7 @@ import 'widgets/paginator.dart';
 import 'widgets/reader_menu.dart';
 import 'widgets/selection_toolbar.dart';
 import 'widgets/text_block.dart';
+import '../../data/model/reader_settings.dart';
 
 /// 阅读器页：滚动/翻页双模式 + 选句批注 + 目录/排版/查找/书签/自动滚。
 class ReaderPage extends StatefulWidget {
@@ -89,7 +90,7 @@ class _ReaderPageState extends State<ReaderPage> {
         if (_vm.settings.mode == ReaderMode.scroll && _scroll.hasClients) {
           _scroll.jumpTo(offset.clamp(0, _scroll.position.maxScrollExtent));
         } else if (_pageController.hasClients) {
-          _pageController.jumpTo(offset.toInt().clamp(0, 9999));
+          _pageController.jumpTo(offset.toInt().clamp(0, 9999).toDouble());
         }
       });
     }
