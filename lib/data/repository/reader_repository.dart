@@ -93,7 +93,7 @@ class ReaderRepository {
   BookSource bookSourceRef(Book book) {
     final resolver = _sourceResolver;
     if (resolver == null) {
-      throw AppError(AppErrorKind.unknown, '书源解析器未初始化');
+      throw const AppError(AppErrorKind.unknown, '书源解析器未初始化');
     }
     return resolver(book.sourceId ?? 0);
   }
