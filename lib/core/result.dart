@@ -1,6 +1,6 @@
 import 'app_error.dart';
 
-/// 轻量 Result 类型：Repository 统一返回 Result<T>，ViewModel 无需 try/catch。
+/// 轻量 `Result<T>` 类型：Repository 统一返回 `Result<T>`，ViewModel 无需 try/catch。
 sealed class Result<T> {
   const Result();
 
