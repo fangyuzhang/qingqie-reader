@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../model/note.dart';
-import 'app_database.dart';
+import '../app_database.dart';
 
 /// 笔记 DAO（划线/批注/书摘）。
 class NoteDao {
