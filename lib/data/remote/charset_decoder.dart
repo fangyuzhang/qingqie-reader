@@ -38,7 +38,7 @@ class CharsetDecoder {
     // 3. GB18030（Android 原生 Charset，兼容 GBK）
     try {
       final text = await CharsetConverter.decode('GB18030', bytes);
-      if (text != null && text.isNotEmpty) {
+      if (text.isNotEmpty) {
         return Result.ok(_stripBom(text));
       }
     } catch (_) {
