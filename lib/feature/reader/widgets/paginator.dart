@@ -68,7 +68,7 @@ class Paginator {
         }
       }
       // 段间距（以空行近似）
-      final gap = TextPiece('\n\n');
+      const gap = TextPiece('\n\n');
       final gapHeight = _measure(gap, style, width);
       if (currentHeight + gapHeight > height) {
         pushPage();
