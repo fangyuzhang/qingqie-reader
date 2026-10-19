@@ -1,0 +1,75 @@
+青茄阅读 (Qingqie Reader) — NOTICE
+
+本项目为 Wenku8_Flutter 的重构衍生版。
+
+Based on mikufoxxx/Wenku8_Flutter and its contributors.
+https://github.com/mikufoxxx/Wenku8_Flutter
+
+Which is in turn based on MewX/light-novel-library_Wenku8_Android:
+https://github.com/MewX/light-novel-library_Wenku8_Android
+Copyright (C) 2015 MewX, GNU GPL version 2 or (at your option) any later
+version. The upstream LICENSE file is retained verbatim at
+docs/licenses/Wenku8_Flutter-LICENSE.txt. Original notices remain applicable.
+
+This combined distribution is released under GNU GPL version 3 (see LICENSE).
+
+--------------------------------------------------------------------------
+从原项目移植/保留的内容（源码中以【原项目保留】注释标注）：
+
+1. 立体书架几何算法
+   来源：lib/archive_shelf_geometry.dart + lib/archive_wave.dart
+   移植到：lib/feature/bookshelf/shelf_geometry.dart、shelf3d.dart
+   内容：depthX=.66 / depthY=-.30、书脊=W*.043、书距=书脊+11、封面=W*.32、
+        railY=d*2.5+d²*.45、选中量 weight=cos(d/1.48·π/2)²、
+        origin 拉出/上浮公式。数据绑定按本项目 Book 模型重写。
+
+2. TXT 章节拆分策略
+   来源：lib/local_text_import.dart
+   移植到：lib/data/parser/txt_parser.dart
+   内容：章节/卷标题正则、10000 章上限、10 万字自动分片。
+
+3. 阅读偏好值对象模式
+   来源：lib/reader_preferences.dart
+   移植到：lib/data/model/reader_settings.dart
+   内容：不可变值对象 + copyWith + JSON 序列化 + 数值范围校验。
+
+4. 分页测量思路
+   来源：lib/reader_pagination.dart
+   移植到：lib/feature/reader/widgets/paginator.dart
+   内容：TextPainter 测量 + 贪心装页（简化实现）。
+
+5. 备份格式与上限
+   来源：lib/library_backup.dart
+   移植到：lib/data/repository/backup_repository.dart
+   内容：{format, version, createdAt, records} 结构、4 MiB 上限。
+
+6. 导入上限与友好文案
+   来源：lib/book_import_limits.dart
+   移植到：lib/data/file/local_import_service.dart
+
+--------------------------------------------------------------------------
+本项目新增的内容（源码中以【新增】/【重构】注释标注）：
+
+- MVVM + Repository 分层骨架（lib/core、lib/data、lib/feature）
+- sqflite 六张表数据层（categories/books/reading_progress/bookmarks/
+  book_sources/notes，见 docs/03-数据库表结构设计.md）
+- 声明式 YAML 书源规范与规则引擎（docs/04-书源YAML配置规范.md）
+- TXT 编码检测（UTF-8/GB18030，修复上游仅 UTF-8 的缺陷）
+- 划线/批注/书摘（蜗牛读书式选句交互，来自本产品线 HTML 原型）
+- 章内查找、自动滚动、书签管理、书架分类与本地搜索
+
+--------------------------------------------------------------------------
+从原项目删除的内容（详见 docs/02-增删功能方案.md）：
+
+wenku8 账号登录、书评/评论、收藏云同步、JNI 网络层（libcpp.so）、
+听书 TTS（edge-tts/LGPL）、插画系统、网盘导入、应用内更新、
+MOBI 导入（libmobi/LGPL）、玻璃拟态 shader、竖排翻页。
+
+--------------------------------------------------------------------------
+第三方依赖（均从其官方渠道按各自协议分发，未修改）：
+
+provider (MIT) · sqflite (BSD-3) · dio (MIT) · html (MIT) ·
+archive (MIT) · xml (MIT) · yaml (MIT) · file_picker (MIT) ·
+charset_converter (MIT) · path/path_provider (BSD-3) ·
+shared_preferences (BSD-3) · uuid (MIT) · intl (BSD-3) ·
+flutter_lints (BSD-3)
