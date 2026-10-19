@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../model/reading_progress.dart';
-import 'app_database.dart';
+import '../app_database.dart';
 
 /// 阅读进度 DAO（一书一行，upsert 语义）。
 class ProgressDao {
